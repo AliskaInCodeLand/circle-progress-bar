@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-    <a href='№'>Демонстрация</a>
+    <a href='https://aliskaincodeland.github.io/circle-progress-bar/'>Демонстрация</a>
     <h4 align="center">Круговой индикатор процесса</h4>
 </p>
 
