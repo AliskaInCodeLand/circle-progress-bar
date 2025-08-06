@@ -19,7 +19,7 @@
 
         <div class="controls">
             <label class="control" aria-label="input value">
-                <input id="value" type="number" class="value-input" min="0" max="100" placeholder="0">
+                <input id="value" type="number" pattern=" 0+\.[0-9]*[1-9][0-9]*$" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="value-input" min="0" max="100" placeholder="0">
                 <span class="label">Value</span>
             </label>
 
