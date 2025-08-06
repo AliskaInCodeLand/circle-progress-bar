@@ -5,43 +5,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="./lib/progress-bar.css">
+    <link rel="stylesheet" href="./lib/progress-bar/progress-bar.css">
     <title>Progress bar</title>
 </head>
 
 <body>
-    <div class="progress-bar">
-        <h2 class="title">Progress</h2>
-        <div class="container">
-            <div class="wrapper-svg">
-                <svg class="svg" viewBox="0 0 160 160" width="70%" height="90%">
-                    <circle class="track" cx="80" cy="80" r="68" />
-                    <circle class="fill" cx="80" cy="80" r="68" />
-                </svg>
-            </div>
 
-            <div class="controls">
-                <label class="control" aria-label="input value">
-                    <input id="value" type="number" class="value-input" min="0" max="100" placeholder="0">
-                    <span class="label">Value</span>
-                </label>
+<div class="progress-bar">
+    <h2 class="title">Progress</h2>
+    <div class="container">
 
-                <label class="control" aria-label="toggle animate">
-                    <input type="checkbox" id="animate-toggle" class="toggle">
-                    <span class="toggle-check"></span>
-                    <span class="label">Animate</span>
-                </label>
+        <div class="wrapper-svg" id="wrapper-svg"></div>
 
-                <label class="control" aria-label="toggle hide">
-                    <input type="checkbox" id="hide-toggle" class="toggle">
-                    <span class="toggle-check"></span>
-                    <span class="label">Hide</span>
-                </label>
-            </div>
+        <div class="controls">
+            <label class="control" aria-label="input value">
+                <input id="value" type="number" class="value-input" min="0" max="100" placeholder="0">
+                <span class="label">Value</span>
+            </label>
+
+            <label class="control" aria-label="toggle animate">
+                <input type="checkbox" id="animate-toggle" class="toggle">
+                <span class="toggle-check"></span>
+                <span class="label">Animate</span>
+            </label>
+
+            <label class="control" aria-label="toggle hide">
+                <input type="checkbox" id="hide-toggle" class="toggle">
+                <span class="toggle-check"></span>
+                <span class="label">Hide</span>
+            </label>
         </div>
     </div>
-    <script src="./lib/progress-bar.js"></script>
+</div>
+    
+    
+    <script src="./lib/progress-bar//progress-bar.js"></script>
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const bar = new ProgressBar();
+            document.getElementById('wrapper-svg').appendChild(bar.render());
+
+            const valueInput = document.getElementById('value');
+            valueInput.addEventListener('input', (e) => {
+                bar.setValue(e.target.value);
+            });
+
+            document.getElementById('animate-toggle').addEventListener('change', (e) => {
+                bar.setAnimated(e.target.checked);
+            });
+
+            document.getElementById('hide-toggle').addEventListener('change', (e) => {
+                bar.setHidden(e.target.checked);
+            });
+        });
     </script>
 </body>
 </html>
